@@ -48,7 +48,7 @@ export default async function BlogPost({
 
       <div className="prose prose-lg prose-slate max-w-none mx-auto font-serif">
         <StructuredText
-          data={post.content}
+          data={post.content as any}
           renderBlock={({ record }) => {
             // Safety check - never crash
             if (!record || !record.__typename) {
@@ -61,7 +61,7 @@ export default async function BlogPost({
             // Switch statement for block types
             switch (record.__typename) {
               case 'QuoteRecord': {
-                const quote = record as QuoteRecord;
+                const quote = record as unknown as QuoteRecord;
                 return (
                   <blockquote className="border-l-4 border-blue-500 pl-4 py-4 my-8 italic text-gray-700 not-prose">
                     <p className="text-xl mb-2">"{quote.text || ''}"</p>
@@ -75,7 +75,7 @@ export default async function BlogPost({
               }
 
               case 'ImageBlockRecord': {
-                const imageBlock = record as ImageBlockRecord;
+                const imageBlock = record as unknown as ImageBlockRecord;
                 if (imageBlock.image?.responsiveImage) {
                   return (
                     <figure className="my-8 not-prose">

@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-georgia)', 'Georgia', 'serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
       },
     },
   },

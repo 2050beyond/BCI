@@ -1,18 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, Georgia } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
-});
-
-const georgia = Georgia({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-georgia',
   display: 'swap',
 });
 
@@ -27,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${georgia.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="font-sans">
         <Navigation />
         <main>{children}</main>

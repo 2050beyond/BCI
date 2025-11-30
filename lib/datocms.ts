@@ -54,7 +54,7 @@ export interface Post {
   coverImage: CoverImage | null;
   content: {
     value: any;
-    blocks: (QuoteRecord | ImageBlockRecord)[];
+    blocks?: (QuoteRecord | ImageBlockRecord)[];
   };
 }
 
@@ -112,32 +112,6 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
         }
         content {
           value
-          blocks {
-            ... on QuoteRecord {
-              __typename
-              id
-              text
-              author
-            }
-            ... on ImageBlockRecord {
-              __typename
-              id
-              image {
-                responsiveImage(imgixParams: { fit: max, w: 1200, h: 800, auto: format }) {
-                  srcSet
-                  webpSrcSet
-                  sizes
-                  src
-                  width
-                  height
-                  aspectRatio
-                  alt
-                  title
-                  base64
-                }
-              }
-            }
-          }
         }
       }
     }
