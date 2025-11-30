@@ -4,8 +4,14 @@ import { StructuredText, Image as DatoImage } from 'react-datocms';
 import { getPostBySlug, getAllPostSlugs, QuoteRecord, ImageBlockRecord } from '@/lib/datocms';
 
 export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+  try {
+    const slugs = await getAllPostSlugs();
+    return slugs.map((slug) => ({ slug }));
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
+    // Return empty array if API fails - prevents build crash
+    return [];
+  }
 }
 
 export default async function BlogPost({

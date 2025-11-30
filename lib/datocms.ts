@@ -1,17 +1,20 @@
 import { GraphQLClient } from 'graphql-request';
 
 const API_URL = 'https://graphql.datocms.com/';
-const API_TOKEN = process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN;
 
-if (!API_TOKEN) {
-  throw new Error('NEXT_PUBLIC_DATOCMS_API_TOKEN is not set');
+function getClient() {
+  const API_TOKEN = process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN;
+  
+  if (!API_TOKEN) {
+    throw new Error('NEXT_PUBLIC_DATOCMS_API_TOKEN is not set. Please add it to your environment variables.');
+  }
+
+  return new GraphQLClient(API_URL, {
+    headers: {
+      authorization: `Bearer ${API_TOKEN}`,
+    },
+  });
 }
-
-const client = new GraphQLClient(API_URL, {
-  headers: {
-    authorization: `Bearer ${API_TOKEN}`,
-  },
-});
 
 export interface CoverImage {
   url: string;
@@ -68,9 +71,19 @@ export interface PostPreview {
 
 async function performRequest<T>(query: string, variables?: Record<string, any>): Promise<T> {
   try {
+    const client = getClient();
     const data = await client.request<T>(query, variables);
     return data;
-  } catch (error) {
+  } catch (error: any) {
+    // More helpful error messages
+    if (error?.response?.errors) {
+      const errors = error.response.errors;
+      console.error('GraphQL errors:', errors);
+      // If it's a missing token error, provide helpful message
+      if (errors.some((e: any) => e.message?.includes('Invalid API token'))) {
+        throw new Error('Invalid DatoCMS API token. Please check your NEXT_PUBLIC_DATOCMS_API_TOKEN environment variable.');
+      }
+    }
     console.error('GraphQL request failed:', error);
     throw error;
   }

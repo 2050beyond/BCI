@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllPosts } from '@/lib/datocms';
+import { getAllPosts, PostPreview } from '@/lib/datocms';
 
 export default async function Home() {
-  const posts = await getAllPosts();
+  let posts: PostPreview[] = [];
+  try {
+    posts = await getAllPosts();
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+    // Continue with empty array - prevents build crash
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
