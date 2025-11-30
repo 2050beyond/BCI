@@ -112,6 +112,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
         }
         content {
           value
+          blocks {
+            ... on QuoteRecord {
+              __typename
+              id
+              text
+              author
+            }
+          }
         }
       }
     }

@@ -345,7 +345,7 @@ async function createSeedArticles(postModel, quoteModel) {
     console.log('   ✓ Created: Visual Storytelling in the Digital Age');
   }
 
-  // Article 3: The Interview (Multiple Quotes)
+  // Article 3: The Interview (Text only - quotes can be added manually via DatoCMS)
   const article3Slug = 'the-interview-with-tech-visionary';
   if (!existingItems.find(item => item.slug === article3Slug)) {
     await client.items.create({
@@ -368,53 +368,29 @@ async function createSeedArticles(postModel, quoteModel) {
               ],
             },
             {
-              type: 'block',
-              item: {
-                type: 'quote',
-                text: 'Innovation is not about having the best idea. It\'s about executing on good ideas consistently.',
-                author: 'Tech Visionary',
-              },
-            },
-            {
               type: 'paragraph',
               children: [
                 {
                   type: 'span',
-                  value: 'The conversation began with a discussion about the current state of technology and where we\'re heading. Our guest emphasized the importance of execution over ideation.',
+                  value: 'The conversation began with a discussion about the current state of technology and where we\'re heading. Our guest emphasized the importance of execution over ideation, noting that "Innovation is not about having the best idea. It\'s about executing on good ideas consistently."',
                 },
               ],
             },
             {
-              type: 'block',
-              item: {
-                type: 'quote',
-                text: 'The most successful companies are those that can adapt quickly to change. Agility is the new competitive advantage.',
-                author: 'Tech Visionary',
-              },
-            },
-            {
               type: 'paragraph',
               children: [
                 {
                   type: 'span',
-                  value: 'When asked about the key to success in the tech industry, the response was clear: adaptability and speed. Companies that can pivot quickly have a significant advantage.',
+                  value: 'When asked about the key to success in the tech industry, the response was clear: adaptability and speed. "The most successful companies are those that can adapt quickly to change. Agility is the new competitive advantage." Companies that can pivot quickly have a significant advantage.',
                 },
               ],
             },
             {
-              type: 'block',
-              item: {
-                type: 'quote',
-                text: 'Technology should serve humanity, not the other way around. We need to build tools that enhance human capabilities rather than replace them.',
-                author: 'Tech Visionary',
-              },
-            },
-            {
               type: 'paragraph',
               children: [
                 {
                   type: 'span',
-                  value: 'The interview concluded with thoughts on the ethical implications of technology. The emphasis was on creating technology that empowers people rather than controlling them.',
+                  value: 'The interview concluded with thoughts on the ethical implications of technology. The emphasis was on creating technology that empowers people rather than controlling them. As our guest put it: "Technology should serve humanity, not the other way around. We need to build tools that enhance human capabilities rather than replace them."',
                 },
               ],
             },
@@ -422,10 +398,10 @@ async function createSeedArticles(postModel, quoteModel) {
         },
       },
     });
-    console.log('   ✓ Created: The Interview');
+    console.log('   ✓ Created: The Interview (Note: Add Quote blocks manually via DatoCMS)');
   }
 
-  // Article 4: Mixed Media
+  // Article 4: Mixed Media (Text only - images and quotes can be added manually)
   const article4Slug = 'the-art-of-balance';
   if (!existingItems.find(item => item.slug === article4Slug)) {
     await client.items.create({
@@ -448,19 +424,11 @@ async function createSeedArticles(postModel, quoteModel) {
               ],
             },
             {
-              type: 'block',
-              item: {
-                type: 'quote',
-                text: 'Content is king, but context is the kingdom.',
-                author: 'Content Strategist',
-              },
-            },
-            {
               type: 'paragraph',
               children: [
                 {
                   type: 'span',
-                  value: 'Each element serves a purpose. Text allows for detailed explanation and nuance. Images break up long passages and provide visual interest. Quotes highlight key insights and add credibility.',
+                  value: 'As one content strategist noted: "Content is king, but context is the kingdom." Each element serves a purpose. Text allows for detailed explanation and nuance. Images break up long passages and provide visual interest. Quotes highlight key insights and add credibility.',
                 },
               ],
             },
@@ -492,11 +460,20 @@ async function createSeedArticles(postModel, quoteModel) {
                 },
               ],
             },
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  type: 'span',
+                  value: 'Note: You can add images and Quote blocks to this article through the DatoCMS structured text editor.',
+                },
+              ],
+            },
           ],
         },
       },
     });
-    console.log('   ✓ Created: The Art of Balance');
+    console.log('   ✓ Created: The Art of Balance (Note: Add images and quotes manually via DatoCMS)');
   }
 
   console.log('   ✓ All seed articles created');
