@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-georgia: 'Georgia', serif;
+}
+
+body {
+  @apply bg-white text-black antialiased;
+}
+
+.prose {
+  @apply font-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+

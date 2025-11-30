@@ -1,0 +1,42 @@
+{
+  "name": "bci-blog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "setup-datocms": "node scripts/setup-datocms.mjs",
+    "setup-bci-cms": "node scripts/setup-bci-cms.mjs",
+    "setup-marketing-cms": "node scripts/setup-marketing-cms.mjs",
+    "repair-schema": "node scripts/repair-schema.mjs",
+    "patch-schema": "node scripts/patch-schema.mjs",
+    "force-fix-schema": "node scripts/force-fix-schema.mjs",
+    "init-laser-blog": "node scripts/init-laser-blog.mjs"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-datocms": "^5.0.0",
+    "@datocms/cma-client-node": "^4.0.0",
+    "graphql-request": "^6.1.0",
+    "graphql": "^16.8.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "katex": "^0.16.11",
+    "react-katex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "@tailwindcss/typography": "^0.5.10",
+    "typescript": "^5.5.3"
+  }
+}
+
